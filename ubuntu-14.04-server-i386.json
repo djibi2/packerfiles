@@ -52,5 +52,35 @@
       "output": "cf-ubuntu-14.04-server-i386_{{.Provider}}.box",
       "type": "vagrant"
     }
+  ],
+  "provisioners": [
+    {
+      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "scripts": [
+        "scripts/update.sh",
+        "scripts/sshd.sh",
+        "scripts/networking.sh",
+        "scripts/sudoers.sh",
+        "scripts/vmtools.sh",
+        "scripts/dependency.sh"
+
+      ],
+      "type": "shell"
+    },
+    {
+      "execute_command": "echo 'vagrant'|{{.Vars}} bash '{{.Path}}'",
+      "scripts": [
+        "scripts/vagrant.sh",
+        "scripts/rvm.sh"
+      ],
+      "type": "shell"
+    },
+    {
+      "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "scripts": [
+        "scripts/cleanup.sh"
+      ],
+      "type": "shell"
+    }
   ]
 }
