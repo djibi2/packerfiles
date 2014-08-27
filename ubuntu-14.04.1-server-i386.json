@@ -30,8 +30,8 @@
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "guest_os_type": "Ubuntu",
       "http_directory": "http",
-      "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-i386.iso",
-      "iso_checksum": "08d25bf879e353686a974b7b14ae7d81",
+      "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.1-server-i386.iso",
+      "iso_checksum": "3aa14ca13d52df070870d39306f4a4eb",
       "iso_checksum_type": "md5",
       "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "ssh_password": "vagrant",
@@ -39,7 +39,7 @@
       "ssh_username": "vagrant",
       "ssh_wait_timeout": "10000s",
       "type": "virtualbox-iso",
-      "vm_name": "cfbootcamp",
+      "vm_name": "trustyi386",
       "vboxmanage": [
         ["modifyvm", "{{.Name}}", "--memory", "1024"],
         ["modifyvm", "{{.Name}}", "--cpus", "2"]
@@ -49,7 +49,7 @@
   ],
   "post-processors": [
     {
-      "output": "cf-ubuntu-14.04-server-i386_{{.Provider}}.box",
+      "output": "true-ubuntu-14.04.01-server-i386_{{.Provider}}.box",
       "type": "vagrant"
     }
   ],
@@ -70,8 +70,7 @@
     {
       "execute_command": "echo 'vagrant'|{{.Vars}} bash '{{.Path}}'",
       "scripts": [
-        "scripts/vagrant.sh",
-        "scripts/rvm.sh"
+        "scripts/vagrant.sh"
       ],
       "type": "shell"
     },
